@@ -3,10 +3,10 @@ package model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Initiative {
-
 
     private static volatile AtomicInteger idCount;
 
@@ -63,12 +63,12 @@ public class Initiative {
         this.id = id;
     }
 
-    public InitiativeState getState() {
-        return state;
+    public String getState() {
+        return state.name();
     }
 
-    public void setState(InitiativeState state) {
-        this.state = state;
+    public void setState(String state) {
+        this.state = InitiativeState.valueOf(state);
     }
 
     public String getUrl() {
@@ -107,5 +107,20 @@ public class Initiative {
         return Initiative.idCount.incrementAndGet();
     }
 
+    public LocalDate getStartDate(){
+        return this.startDate;
+    }
+
+    public void setStartDate(LocalDate startDate){
+        this.startDate = startDate;
+    }
+
+    public LocalDate getFinishDate(){
+        return this.finishDate;
+    }
+
+    public void setFinishDate(LocalDate finishDate){
+        this.finishDate = finishDate;
+    }
 
 }
