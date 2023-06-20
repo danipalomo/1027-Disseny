@@ -1,3 +1,5 @@
+package es.uji.ei1027.SDGinUJI;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 

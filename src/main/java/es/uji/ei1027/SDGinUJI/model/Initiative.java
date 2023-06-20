@@ -1,9 +1,8 @@
-package model;
+package es.uji.ei1027.SDGinUJI.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Initiative {

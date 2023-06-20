@@ -1,8 +1,8 @@
-package controller;
+package es.uji.ei1027.SDGinUJI.controller;
 
-import dao.InitiativeDAO;
-import dao.SdgDAO;
-import model.Initiative;
+import es.uji.ei1027.SDGinUJI.dao.InitiativeDAO;
+import es.uji.ei1027.SDGinUJI.dao.SdgDAO;
+import es.uji.ei1027.SDGinUJI.model.Initiative;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

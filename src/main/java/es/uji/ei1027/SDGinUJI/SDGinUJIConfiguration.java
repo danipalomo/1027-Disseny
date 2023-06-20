@@ -1,4 +1,6 @@
-import model.UJIMember;
+package es.uji.ei1027.SDGinUJI;
+
+import es.uji.ei1027.SDGinUJI.model.UJIMember;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

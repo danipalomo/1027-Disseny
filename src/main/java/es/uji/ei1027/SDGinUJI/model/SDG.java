@@ -1,4 +1,4 @@
-package model;
+package es.uji.ei1027.SDGinUJI.model;
 
 public class SDG {
 

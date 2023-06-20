@@ -1,6 +1,6 @@
-package dao;
+package es.uji.ei1027.SDGinUJI.dao;
 
-import model.SDG;
+import es.uji.ei1027.SDGinUJI.model.SDG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,6 +1,6 @@
-package dao;
+package es.uji.ei1027.SDGinUJI.dao;
 
-import model.Initiative;
+import es.uji.ei1027.SDGinUJI.model.Initiative;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package dao;
+package es.uji.ei1027.SDGinUJI.dao;
 
-import model.Initiative;
+import es.uji.ei1027.SDGinUJI.model.Initiative;
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

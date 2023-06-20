@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 260px;
+  background: #C3E7FF;
+  margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
+  height: 100vh;
+  z-index: -2;
+}
+
+.image-container {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  margin-left: 260px;
+  z-index: -1;
+}
+
+.image-container img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+    margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
+
+}
+
+.container h1 {
+  font-size: 150px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  position: center;
+  z-index: 1;
+  margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
+}
+
+h2 {
+  position: center;
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 1;
+  margin-top: 150px; /* Ajusta el margen superior según tus necesidades */
+}
+
+
+

@@ -1,15 +1,11 @@
-package controller;
+package es.uji.ei1027.SDGinUJI.controller;
 
-import dao.SdgDAO;
+import es.uji.ei1027.SDGinUJI.dao.SdgDAO;
 
-import model.SDG;
+import es.uji.ei1027.SDGinUJI.model.SDG;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +24,8 @@ public class SDGController {
     }
 
 /*    @RequestMapping("/list")
-    public String listSDGs(Model model) {
-        model.addAttribute("sdg", sdgDao.getSDG());
+    public String listSDGs(Model es.uji.ei1027.SDGinUJI.model) {
+        es.uji.ei1027.SDGinUJI.model.addAttribute("sdg", sdgDao.getSDG());
         return "sdg/list";
     }*/
 
