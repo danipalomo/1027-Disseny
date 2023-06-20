@@ -29,7 +29,7 @@ public class InitiativeController {
     }
 
     @RequestMapping("/list")
-    public String listSDGs(Model model) {
+    public String listInitiative(Model model) {
         List<Initiative> initiativeList = initiativeDao.getInitiatives();
         initiativeList.sort(Comparator.comparingInt(Initiative::getId));
         model.addAttribute("initiative", initiativeList);

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Iniciativas</title>
+    <link rel="stylesheet" th:href="@{/styles/menu_lateral.css}" />
+    <link rel="stylesheet" th:href="@{/styles/list_initiative.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+<body>
+<div class="topbar"></div>
+<div class="rightbar"></div>
+<nav class="sidebar">
+    <a href="#" class="titulo">Explorar</a>
+    <div class="menu-content">
+        <ul class="menu-items">
+            <li class="item">
+                <a th:href="@{/}" class="submenu-item">
+                    <span>Inicio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="item">
+                <div class="submenu-item">
+                    <span>Login</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </li>
+            <li class="item">
+                <a href="/initiative/list" class="submenu-item">
+                    <span>Iniciativas</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="item">
+                <div class="submenu-item">
+                    <span>SDG's</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="menu-image">
+        <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image" />
+    </div>
+</nav>
+
+<div class="mainc">
+    <div class="container">
+        <h1>Listado de Iniciativas</h1>
+        <div class="initiative-list">
+            <div th:each="initiative : ${initiative}" class="initiative-card">
+                <h2 th:text="${initiative.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
+                <h3>Descripción:</h3>
+                <p th:text="${initiative.description}" style="text-transform: capitalize;">Descripción de la iniciativa</p>
+                <p th:text="${initiative.state}" style="text-transform: capitalize;">Estado:</p>
+                <p th:text="${initiative.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
+                <p th:text="${initiative.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

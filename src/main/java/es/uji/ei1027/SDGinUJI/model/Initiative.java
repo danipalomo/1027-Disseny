@@ -31,7 +31,9 @@ public class Initiative {
     private LocalDate finishDate;
 
     private enum InitiativeState {
-        WIP, DONE
+        Pending,
+        Approved,
+        Rejected,
     }
 
     public static int getIdCount() {
