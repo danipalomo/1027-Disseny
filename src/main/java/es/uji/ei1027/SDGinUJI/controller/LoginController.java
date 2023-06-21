@@ -22,8 +22,8 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     private static final String BASE_REDIRECT = "redirect:/";
-    private static final String INDEX_STUDENT = "index_UJIMember.html";
-    private static final String INDEX_OCDS = "index_OCDS.html";
+    private static final String INDEX_STUDENT = "index_UJIMember";
+    private static final String INDEX_OCDS = "index_OCDS";
 
     @Autowired
     private UserDAO userDao;
@@ -37,15 +37,16 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String validateLogin(@ModelAttribute("user") UserDetails user, HttpSession session, Model model) {
 
-        UserDetails authenticatedUser = userDao.loadUserByUsername(user.getUsername(), user.getPassword());
+        user = userDao.loadUserByUsername(user.getUsername(), user.getPassword());
 
-        if (authenticatedUser == null) {
+        if (user == null) {
             model.addAttribute("errorMsg", "Credenciales incorrectas");
             return "/login/login";
         }
 
-        session.setAttribute("user", authenticatedUser);
-        return getRedirectByUserTypePostLogin(authenticatedUser.getTypeUser());
+        model.addAttribute("user", user.getUsername());
+        session.setAttribute("user", user.getUsername());
+        return getRedirectByUserTypePostLogin(user.getTypeUser());
     }
 
     @RequestMapping("/logout")
@@ -59,7 +60,7 @@ public class LoginController {
             case UJI_MEMBER:
                 return BASE_REDIRECT + INDEX_STUDENT;
             case OCDS:
-                return BASE_REDIRECT + INDEX_OCDS;
+                return INDEX_OCDS;
             default:
                 return BASE_REDIRECT;
         }

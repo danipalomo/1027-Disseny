@@ -36,7 +36,7 @@
             </li>
             <li class="item">
                 <div class="submenu-item">
-                    <span>SDG's <a href="https://www.ejemplo.com">sitio web</a></span>
+                    <span>SDG's <a href="">sitio web</a></span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </li>
@@ -51,13 +51,19 @@
     <div class="container">
         <h1>Listado de Iniciativas</h1>
         <div class="initiative-list">
-            <div th:each="initiative : ${initiative}" class="initiative-card">
-                <h2 th:text="${initiative.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
+            <div th:each="iniciativa : ${initiativesOCDS}" class="initiative-card">
+                <h2 th:text="${iniciativa.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
                 <h3>Descripción:</h3>
-                <p th:text="${initiative.description}" style="text-transform: capitalize;">Descripción de la iniciativa</p>
-                <p th:text="${initiative.state}" style="text-transform: capitalize;">Estado:</p>
-                <p th:text="${initiative.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
-                <p th:text="${initiative.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
+                <p th:text="${iniciativa.description}" style="text-transform: capitalize;">Descripción de la iniciativa</p>
+                <p th:text="${iniciativa.state}" style="text-transform: capitalize;">Estado:</p>
+                <p th:text="${iniciativa.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
+                <p th:text="${iniciativa.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
+
+                <div>
+                    <a th:href="@{/ocds/initiative/approve/{id}(id=${iniciativa.getId()})}" class="btn btn-warning" role="button">Aceptar</a>
+                    <a th:href="@{/ocds/initiative/reject/{id}(id=${iniciativa.getId()})}" class="btn btn-danger" role="button">Rechazar</a>
+
+                </div>
             </div>
         </div>
     </div>

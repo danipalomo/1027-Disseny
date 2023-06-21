@@ -36,7 +36,7 @@
             </li>
             <li class="item">
                 <div class="submenu-item">
-                    <span>SDG's <a href="https://www.ejemplo.com">sitio web</a></span>
+                    <span>SDG's <a href="">sitio web</a></span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </li>
@@ -58,6 +58,12 @@
                 <p th:text="${initiative.state}" style="text-transform: capitalize;">Estado:</p>
                 <p th:text="${initiative.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
                 <p th:text="${initiative.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
+
+                <!-- Agrega las opciones de editar y borrar si el usuario es autor -->
+                <div th:if="${user.id == user.id}">
+                    <a th:href="@{/initiative/edit/{id}(id=${initiative.id})}">Editar</a>
+                    <a th:href="@{/initiative/delete/{id}(id=${initiative.id})}">Borrar</a>
+                </div>
             </div>
         </div>
     </div>

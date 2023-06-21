@@ -31,17 +31,30 @@ public class InitiativeDAO {
         int nextId = maxId + 1;
         initiative.setId(nextId);
 
+        initiative.setState("Pending");
+        if(initiative.getUrl() == null){
+            initiative.setUrl("www.uji.es");
+        }
+
         jdbcTemplate.update("INSERT INTO initiative VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 initiative.getId(), initiative.getName(), initiative.getDescription(),
                 initiative.getState(), initiative.getUrl(), initiative.getStartDate(),
                 initiative.getFinishDate(), initiative.getResults(),
-                initiative.getGoal(), initiative.getIdSDG());
+                initiative.getGoal(), 3);
     }
 
 
 
     public void deleteInitiative(int id) {
         jdbcTemplate.update("DELETE FROM initiative WHERE id_initiative = ? ", id);
+    }
+
+    public void approveInitiative(int id) {
+        jdbcTemplate.update("UPDATE initiative SET state = 'Approved' WHERE id_initiative = ?", id);
+    }
+
+    public void rejectInitiative(int id) {
+        jdbcTemplate.update("UPDATE initiative SET state = 'Denied' WHERE id_initiative = ?", id);
     }
 
     public void updateInitiative(Initiative initiative) {

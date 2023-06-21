@@ -40,7 +40,6 @@ public class InitiativeController {
     public String addInitiative(Model model){
         model.addAttribute("initiative", new Initiative());
         model.addAttribute("sdgs", sdgDao.getSDG());
-
         return "initiative/add";
     }
 

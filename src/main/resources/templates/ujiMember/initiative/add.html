@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Añadir Iniciativa</title>
+    <link rel="stylesheet" type="text/css" href="/styles/menu_lateral.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/add_initiative.css"/>
+</head>
+<body>
+<nav class="sidebar">
+    <a href="#" class="titulo">Explorar</a>
+
+    <div class="menu-content">
+        <ul class="menu-items">
+
+            <li class="item">
+                <a href="index.html" class="submenu-item">
+                    <span>Inicio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/login/login" class="submenu-item">
+                    <span>Login</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/initiative/add" class="submenu-item">
+                    <span>Iniciativas</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="item">
+                <a href="sdg/list" class="submenu-item">
+                    <span>SDG's</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="item">
+                <a href="/logout" class="submenu-item">
+                    <span>Cerrar Sesión</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu-image">
+        <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
+    </div>
+</nav>
+<div class="content">
+    <form class="form" th:action="@{/ujiMember/initiative/add}" th:object="${initiative}" method="POST">
+        <h1>Crear una iniciativa</h1>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
+        </div>
+        <div class="form-group">
+            <label for="goal">Objetivo</label>
+            <input type="text" class="form-control" id="goal" th:field="*{goal}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}"></td>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Fecha de inicio</label>
+            <input type="date" class="form-control" id="startDate" th:field="*{startDate}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></td>
+        </div>
+        <div class="form-group">
+            <label for="finishDate">Fecha de fin</label>
+            <input type="date" class="form-control" id="finishDate" th:field="*{finishDate}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('finishDate')}" th:errors="*{finishDate}"></td>
+        </div>
+        <div class="form-group">
+            <label for="results">Motivación</label>
+            <input type="text" class="form-control" id="results" th:field="*{results}" maxlength="50" required/>
+            <td th:if="${#fields.hasErrors('results')}" th:errors="*{results}"></td>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="button">Crear iniciativa</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

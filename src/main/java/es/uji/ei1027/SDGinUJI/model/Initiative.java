@@ -33,7 +33,7 @@ public class Initiative {
     private enum InitiativeState {
         Pending,
         Approved,
-        Rejected,
+        Denied,
     }
 
     public static int getIdCount() {

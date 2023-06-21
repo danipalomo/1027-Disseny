@@ -2,9 +2,9 @@ package es.uji.ei1027.SDGinUJI.model;
 
 
 public class UserDetails {
-    String username;
-    String password;
-    TypeUser typeUser;
+    private String username;
+    private String password;
+    private TypeUser typeUser;
 
     public UserDetails() {
         this.username = null;

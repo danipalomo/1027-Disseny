@@ -1,5 +1,6 @@
 .container {
   background-image: url("/assets/suave_1.jpg");
+      background: linear-gradient(to bottom, #99daff, #f2f2f2);
   position: relative;
   display: flex;
   justify-content: center;
@@ -9,6 +10,8 @@
   height: 100vh;
   z-index: -2;
 }
+
+
 
 .image-container {
   position: absolute;
