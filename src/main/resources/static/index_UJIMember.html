@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,7 +29,7 @@
       </li>
 
       <li class="item">
-        <a href="/login" class="submenu-item">
+        <a href="/login/login" class="submenu-item">
           <span>Login</span>
           <i class="fa-solid fa-chevron-right"></i>
         </a>
@@ -44,6 +44,12 @@
       <li class="item">
         <a href="sdg/list" class="submenu-item">
           <span>SDG's</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <a href="/logout" class="submenu-item">
+          <span>Cerrar Sesión</span>
           <i class="fa-solid fa-chevron-right"></i>
         </a>
       </li>

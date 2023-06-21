@@ -2,7 +2,6 @@ package es.uji.ei1027.SDGinUJI.model;
 
 public class Participates {
 
-
     private int idInitiative;  //Initiative.id
 
     private String idUJIMember;  //UJIMember.email

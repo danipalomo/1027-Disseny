@@ -1,10 +1,10 @@
 .container {
+  background-image: url("/assets/suave_1.jpg");
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 260px;
-  background: #C3E7FF;
   margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
   height: 100vh;
   z-index: -2;
@@ -27,8 +27,9 @@
 }
 
 .container h1 {
+  letter-spacing: 1;
   font-size: 150px;
-  font-family: "Raleway", sans-serif;
+  font-family: "sans-serif", sans-serif;
   font-weight: bold;
   position: center;
   z-index: 1;

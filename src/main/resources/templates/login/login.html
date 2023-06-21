@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listado de Iniciativas</title>
+  <link rel="stylesheet" th:href="@{/styles/menu_lateral.css}" />
+  <link rel="stylesheet" th:href="@{/styles/login.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 <body>
+<div class="topbar"></div>
+<div class="rightbar"></div>
+<nav class="sidebar">
+  <a href="#" class="titulo">Explorar</a>
+  <div class="menu-content">
+    <ul class="menu-items">
+      <li class="item">
+        <a th:href="@{/}" class="submenu-item">
+          <span>Inicio</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <a th:href="@{/login}" class="submenu-item">
+          <span>Login</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <a href="/initiative/list" class="submenu-item">
+          <span>Iniciativas</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <div class="submenu-item">
+          <span>SDG's</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="menu-image">
+    <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image" />
+  </div>
+</nav>
 
+<div class="mainc">
+  <div class="container">
+    <h1>Identifícate</h1>
+    <form action="/login" object="${user}" method="post">
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" field="*{username}" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" field="*{password}" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Iniciar sesión">
+
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>
