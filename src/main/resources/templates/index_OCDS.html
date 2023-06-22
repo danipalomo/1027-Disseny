@@ -29,13 +29,6 @@
             </li>
 
             <li class="item">
-                <a href="/login/login" class="submenu-item">
-                    <span>Login</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
-            </li>
-
-            <li class="item">
                 <a href="/ocds/initiative/list" class="submenu-item">
                     <span>Iniciativas</span>
                     <i class="fa-solid fa-chevron-right"></i>
@@ -61,8 +54,8 @@
 </nav>
 
 <div class="container">
-    <div>
-        <h2>Título de la iniciativa</h2>
+    <div class="welcome-message" th:if="${session.user}">
+        <p>¡Bienvenido de nuevo <span th:text="${session.user.username}"></span>!</p>
     </div>
     <div class="image-container">
         <img src="/assets/colores_fondo_azul.png" alt="Descripción de la imagen">

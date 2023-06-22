@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SDGinUJI</title>
   <link rel="stylesheet" href="/styles/menu_lateral.css" />
-  <link rel="stylesheet" href="/styles/topbar.css" />
   <link rel="stylesheet" href="/styles/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
@@ -29,14 +28,7 @@
       </li>
 
       <li class="item">
-        <a href="/login/login" class="submenu-item">
-          <span>Login</span>
-          <i class="fa-solid fa-chevron-right"></i>
-        </a>
-      </li>
-
-      <li class="item">
-        <a href="ujiMember/initiative/add" class="submenu-item">
+        <a href="ujiMember/initiative/list" class="submenu-item">
           <span>Iniciativas</span>
           <i class="fa-solid fa-chevron-right"></i>
         </a>
@@ -61,8 +53,8 @@
 </nav>
 
 <div class="container">
-  <div>
-    <h2>Título de la iniciativa</h2>
+  <div class="welcome-message" th:if="${session.user}">
+    <p>¡Bienvenido de nuevo <span th:text="${session.user.username}"></span>!</p>
   </div>
   <div class="image-container">
     <img src="/assets/colores_fondo_azul.png" alt="Descripción de la imagen">

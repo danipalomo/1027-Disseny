@@ -1,6 +1,8 @@
 package es.uji.ei1027.SDGinUJI.model;
 
-public class SDG {
+import java.util.Comparator;
+
+public class SDG implements Comparable<SDG>{
 
     private int idSDG; //primary key
 
@@ -40,5 +42,10 @@ public class SDG {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    @Override
+    public int compareTo(SDG sdg) {
+        return Integer.compare(this.idSDG, sdg.getIdSDG());
     }
 }

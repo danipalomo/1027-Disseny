@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Listado de Iniciativas</title>
     <link rel="stylesheet" th:href="@{/styles/menu_lateral.css}" />
-    <link rel="stylesheet" th:href="@{/styles/list_initiative.css}" />
+    <link rel="stylesheet" th:href="@{/styles/list_initiative2.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 <body>
@@ -23,22 +24,22 @@
                 </a>
             </li>
             <li class="item">
-                <a th:href="@{/login}" class="submenu-item">
-                    <span>Login</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
-            </li>
-            <li class="item">
                 <a href="/initiative/list" class="submenu-item">
                     <span>Iniciativas</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </li>
             <li class="item">
-                <div class="submenu-item">
-                    <span>SDG's <a href="">sitio web</a></span>
+                <a href="sdg/list" class="submenu-item">
+                    <span>SDG's</span>
                     <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                </a>
+            </li>
+            <li class="item">
+                <a href="/logout" class="submenu-item">
+                    <span>Cerrar Sesión</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
             </li>
         </ul>
     </div>
@@ -51,22 +52,61 @@
     <div class="container">
         <h1>Listado de Iniciativas</h1>
         <div class="initiative-list">
-            <div th:each="initiative : ${initiative}" class="initiative-card">
+            <div th:each="initiative : ${initiativeList}" class="initiative-card">
                 <h2 th:text="${initiative.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
-                <h3>Descripción:</h3>
-                <p th:text="${initiative.description}" style="text-transform: capitalize;">Descripción de la iniciativa</p>
-                <p th:text="${initiative.state}" style="text-transform: capitalize;">Estado:</p>
-                <p th:text="${initiative.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
-                <p th:text="${initiative.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
-
-                <!-- Agrega las opciones de editar y borrar si el usuario es autor -->
-                <div th:if="${user.id == user.id}">
-                    <a th:href="@{/initiative/edit/{id}(id=${initiative.id})}">Editar</a>
-                    <a th:href="@{/initiative/delete/{id}(id=${initiative.id})}">Borrar</a>
+                <div class="field">
+                    <label><strong>Descripción:</strong></label>
+                    <span th:text="${initiative.description}" style="text-transform: capitalize;"></span>
                 </div>
+                <div class="field">
+                    <label><strong>Estado:</strong></label>
+                    <span th:text="${initiative.state}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>Fecha de inicio:</strong></label>
+                    <span th:text="${initiative.startDate}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>Fecha de fin:</strong></label>
+                    <span th:text="${initiative.finishDate}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>URL:</strong></label>
+                    <span th:text="${initiative.url}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>Motivación de la iniciativa:</strong></label>
+                    <span th:text="${initiative.goal}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>Resultado de la iniciativa:</strong></label>
+                    <span th:text="${initiative.results}" style="text-transform: capitalize;"></span>
+                </div>
+                <div class="field">
+                    <label><strong>SDG:</strong></label>
+                    <span th:text="${sdg.get(initiative.idSDG)}" style="text-transform: capitalize;"></span>
+                </div>
+
+                <div class="field">
+                    <label><strong>Número de iniciativa:</strong></label>
+                    <span th:text="${initiative.id}" style="text-transform: capitalize;"></span>
+                </div>
+
+
+                <div th:if="${initiativeResponsibleList.contains(initiative.id)}">
+                    <div class="buttons-wrapper">
+                        <a th:href="@{/ujiMember/initiative/update/{id}(id=${initiative.id})}" class="btn btn-warning" role="button">Editar</a>
+                        <a th:href="@{/ujiMember/initiative/delete/{id}(id=${initiative.id})}" class="btn btn-danger" role="button">Borrar</a>
+                    </div>
+                </div>
+
             </div>
+        </div>
+        <div class="btn">
+            <a href="add" class="btn btn-success" role="button">Añadir iniciativa</a>
         </div>
     </div>
 </div>
+
 </body>
 </html>

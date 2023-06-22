@@ -4,10 +4,15 @@ import es.uji.ei1027.SDGinUJI.model.SDG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class SdgDAO {
@@ -22,8 +27,8 @@ public class SdgDAO {
         jdbcTemplate.update("INSERT into sdg VALUES(?, ?, ?, ?)", sdg.getIdSDG(), sdg.getName(), sdg.getDescription(), sdg.getUrlImage());
     }
 
-    public void deleteSDG(int num_SDG) {
-        jdbcTemplate.update("DELETE FROM sdg WHERE num_SDG =?", num_SDG);
+    public void deleteSDG(int IdSDG) {
+        jdbcTemplate.update("DELETE FROM sdg WHERE num_SDG =?", IdSDG);
     }
 
     public void updateSDG(SDG sdg) {
@@ -45,4 +50,27 @@ public class SdgDAO {
             return null;
         }
     }
+
+    public Map<Integer, String> getIdNameMap() {
+        String sql = "SELECT num_sdg, name FROM sdg";
+        List<Map<Integer, String>> resultList = jdbcTemplate.query(sql, new RowMapper<Map<Integer, String>>() {
+            @Override
+            public Map<Integer, String> mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Map<Integer, String> idNameMap = new HashMap<>();
+                int id = rs.getInt("num_sdg");
+                String name = rs.getString("name");
+                idNameMap.put(id, name);
+                return idNameMap;
+            }
+        });
+
+// Crear un solo mapa con todos los resultados
+        Map<Integer, String> resultMap = new HashMap<>();
+        for (Map<Integer, String> map : resultList) {
+            resultMap.putAll(map);
+        }
+        return resultMap;
+
+    }
+
 }

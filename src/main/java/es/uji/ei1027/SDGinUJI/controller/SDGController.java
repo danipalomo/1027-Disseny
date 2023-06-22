@@ -16,6 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/sdg")
 public class SDGController {
+
+    @Autowired
     private SdgDAO sdgDao;
 
     @Autowired

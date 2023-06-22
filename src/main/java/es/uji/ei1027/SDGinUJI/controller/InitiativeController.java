@@ -18,6 +18,7 @@ import java.util.List;
 
 public class InitiativeController {
 
+    @Autowired
     private InitiativeDAO initiativeDao;
 
     @Autowired
@@ -32,6 +33,7 @@ public class InitiativeController {
     public String listInitiative(Model model) {
         List<Initiative> initiativeList = initiativeDao.getInitiatives();
         initiativeList.sort(Comparator.comparingInt(Initiative::getId));
+        model.addAttribute("sdg", sdgDao.getIdNameMap());
         model.addAttribute("initiative", initiativeList);
         return "initiative/list";
     }

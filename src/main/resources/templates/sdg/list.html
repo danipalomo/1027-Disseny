@@ -1,26 +1,238 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="sdg.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Iniciativas</title>
     <link rel="stylesheet" th:href="@{/styles/menu_lateral.css}" />
+    <link rel="stylesheet" th:href="@{/styles/sdg.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <style>
+        /* Import Google font - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: url('../images/kelsey-knight-SFRw5GChoLA-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            padding-top: 50px;
+            padding-left: 260px;
+            transition: padding-left 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-color: #11101d;
+            color: #11101d;
+            padding: 10px;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+
+        .rightbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 100%;
+            background-color: #11101d;
+            color: #11101d;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 260px;
+            background: #11101d;
+            padding: 15px;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: width 0.5s ease;
+        }
+
+        .titulo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #99daff;
+            text-decoration: none;
+        }
+
+        .menu-content {
+            position: relative;
+            height: calc(100vh - 100px);
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+
+        .menu-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-items {
+            list-style: none;
+            transition: all 0.4s ease;
+        }
+
+        .submenu-active .menu-items {
+            transform: translateX(-56%);
+        }
+
+        .menu-title {
+            color: #00BFFF;
+            font-size: 14px;
+            padding: 15px 20px;
+        }
+
+        .submenu-item {
+            padding: 16px;
+            display: inline-block;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .submenu-item i {
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .submenu-item span {
+            flex-grow: 1;
+        }
+
+        .submenu {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: calc(-100% - 26px);
+            background: #11101d;
+            display: none;
+        }
+
+        .show-submenu ~ .submenu {
+            display: block;
+        }
+
+        .menu-image {
+            display: block;
+            margin-top: 50%;
+            width: 190px;
+            height: auto;
+            z-index: 1002;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            justify-items: center;
+            max-width: 1200px;
+            margin-block: 2rem;
+            gap: 2rem;
+            margin-top: 30px;
+            margin-bottom: 200px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: clamp(20rem, calc(20rem + 2vw), 22rem);
+            overflow: hidden;
+            box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+            border-radius: 1em;
+            background: #ffffff;
+        }
+
+        .card__header {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Objetivos de Desarrollo Sostenible</h1>
-    <div class="sdg-container">
-        <div class="sdg">
-            <img src="sdg1.png" alt="SDG 1">
-            <span>Objetivo 1: Fin de la pobreza</span>
+<div class="topbar"></div>
+<div class="rightbar"></div>
+
+<nav class="sidebar">
+    <a href="#" class="titulo">Explorar</a>
+
+    <div class="menu-content">
+        <ul class="menu-items">
+
+            <li class="item">
+                <a href="index.html" class="submenu-item">
+                    <span>Inicio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/login" class="submenu-item">
+                    <span>Login</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/initiative/list" class="submenu-item">
+                    <span>Iniciativas</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="item">
+                <a href="sdg/list" class="submenu-item">
+                    <span>SDG's</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu-image">
+        <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
+    </div>
+</nav>
+<div class="container justify-content-center">
+    <div th:each="sdg: ${sdg}">
+        <div class="card">
+            <div class="card__header">
+                <img th:src="${sdg.urlImage}" alt="card__image" class="card__image" width="400">
+            </div>
+            <div class="card__body">
+                <h4 th:text="${sdg.idSDG + '. ' + sdg.name}"></h4>
+                <p th:text="${sdg.description}"></p>
+            </div>
         </div>
-        <div class="sdg">
-            <img src="sdg2.png" alt="SDG 2">
-            <span>Objetivo 2: Hambre cero</span>
-        </div>
-        <div class="sdg">
-            <img src="sdg3.png" alt="SDG 3">
-            <span>Objetivo 3: Salud y bienestar</span>
-        </div>
-        <!-- Añade los demás SDGs aquí -->
     </div>
 </div>
 </body>

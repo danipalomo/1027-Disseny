@@ -21,6 +21,7 @@ public class InitiativeDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+
     public void addInitiative(Initiative initiative) {
         Integer maxId = jdbcTemplate.queryForObject("SELECT MAX(id_initiative) FROM initiative", Integer.class);
 
@@ -32,15 +33,13 @@ public class InitiativeDAO {
         initiative.setId(nextId);
 
         initiative.setState("Pending");
-        if(initiative.getUrl() == null){
-            initiative.setUrl("www.uji.es");
-        }
+
 
         jdbcTemplate.update("INSERT INTO initiative VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 initiative.getId(), initiative.getName(), initiative.getDescription(),
                 initiative.getState(), initiative.getUrl(), initiative.getStartDate(),
                 initiative.getFinishDate(), initiative.getResults(),
-                initiative.getGoal(), 3);
+                initiative.getGoal(), initiative.getIdSDG());
     }
 
 

@@ -2,14 +2,13 @@
   text-align: center;
   padding: 20px;
   height: 100%;
+        background: linear-gradient(to bottom, #99daff, #f2f2f2);
 }
 
 .mainc {
   margin-left: 260px;
   margin-right: 30px;
   height: 100%;
-    background: linear-gradient(to bottom, #99daff, #f2f2f2);
-
 }
 
 .initiative-list h2 {
@@ -24,13 +23,27 @@ h3 {
     font-weight: bold;
     font-size: 20px;
 }
+
+h4{
+ margin-left: 100px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega la sombra aquí */
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  margin-top: 80px;
+  margin-bottom: 60px;
+
+}
 h1 {
+  margin-right: 200px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega la sombra aquí */
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 50px;
   margin-top: 80px;
   margin-bottom: 60px;
 }
+
 
 .initiative-list {
   display: flex;
@@ -39,6 +52,7 @@ h1 {
 }
 
 .initiative-card {
+  background: white;
   width: calc(50% - 20px);
   margin-bottom: 40px;
   border-radius: 5px;
@@ -47,6 +61,7 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0;
   animation: fade-in 1s ease-in-out forwards;
+
 }
 
 .initiative-card:nth-child(odd) {
@@ -83,3 +98,108 @@ h1 {
     transform: translateY(0);
   }
 }
+.initiative-card btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.initiative-card btn-edit {
+  background-color: #2196F3;
+
+}
+
+.initiative-card btn-delete {
+  background-color: #F44336;
+}
+
+.initiative-card btn:hover {
+  background-color: #3e8e41;
+}
+
+/* list_initiative.css */
+
+.btn {
+  display: inline-block;
+  padding: 20px 20px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.initiative-card .buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.initiative-card .btn {
+  display: inline-block;
+  margin-left: 160px;
+  margin-top: 60px;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 10px;
+    justify-content: center;
+
+}
+
+.buttons-wrapper {
+  display: center;
+  justify-content: center;
+}
+.buttons-wrapper .btn btn-danger {
+    margin-bottom:15px;
+}
+
+.container .btn btn-success {
+   align: center;
+    justify-content: center;
+     display: block;
+      margin: 0 auto;
+       max-width: 80px;
+       max-height: 40px;
+
+}
+
+.no-initiatives-ocds{
+    margin-left:245px;
+    justify-content: center;
+        font-weight: bold;
+        font-size: 33px;
+        margin-top:300px;
+}
+ .field label {
+            font-weight: bold;
+        }
+        .initiative-card {
+            text-align: left;
+        }
+        .initiative-card h2 {
+            text-align: center;
+        }

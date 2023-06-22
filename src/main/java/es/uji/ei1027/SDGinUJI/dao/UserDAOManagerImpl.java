@@ -15,6 +15,7 @@ public class UserDAOManagerImpl implements UserDAO{
     final Map<String, UserDetails> knownUsers = new HashMap<>();  //mapa para mejorar el acceso a un usuario
     private final int NUM_UJI_MEMBERS_GENERATOR = 2;
     private final int NUM_OCDS_GENERATOR = 2;
+    private final String SIMPLE_EMAIL_AT = "@gmail.com";
 
     private final PasswordEncryptor passwordEncryptor;
 
@@ -27,17 +28,17 @@ public class UserDAOManagerImpl implements UserDAO{
         for (int i = 0; i < NUM_UJI_MEMBERS_GENERATOR; i++) {
             String username = generateUsername();
             String password = "123456";
+            String email = username + SIMPLE_EMAIL_AT;
             TypeUser typeUser = TypeUser.UJI_MEMBER;
-
-            addUser(username, password, typeUser);
+            addUser(username, password, email, typeUser);
         }
 
         for (int i = 0; i < NUM_OCDS_GENERATOR; i++) {
             String username = generateUsername();
             String password = "123456";
             TypeUser typeUser = TypeUser.OCDS;
-
-            addUser(username, password, typeUser);
+            String email = username + SIMPLE_EMAIL_AT;
+            addUser(username, password, email, typeUser);
         }
     }
 
@@ -52,9 +53,10 @@ public class UserDAOManagerImpl implements UserDAO{
     }
 
 
-    private void addUser(String username, String password, TypeUser typeUser){
+    private void addUser(String username, String password, String email, TypeUser typeUser){
         UserDetails user = new UserDetails();
         user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(passwordEncryptor.encryptPassword(password));
         user.setTypeUser(typeUser);
 

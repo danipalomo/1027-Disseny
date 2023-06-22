@@ -43,8 +43,7 @@ public class UJIMemberDAO {
 
     public UJIMember getUJIMember(String email) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM UJIMember WHERE email=?",
-                    new UJIMemberRowMapper(), email);
+            return jdbcTemplate.queryForObject("SELECT * FROM UJIMember WHERE email=?", new UJIMemberRowMapper(), email);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

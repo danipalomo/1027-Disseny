@@ -47,5 +47,11 @@ h2 {
   margin-top: 150px; /* Ajusta el margen superior según tus necesidades */
 }
 
+.welcome-message {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 0px;
+        }
 
 

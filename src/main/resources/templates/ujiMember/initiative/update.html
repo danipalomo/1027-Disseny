@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Añadir Iniciativa</title>
+  <link rel="stylesheet" type="text/css" href="/styles/menu_lateral.css"/>
+  <link rel="stylesheet" type="text/css" href="/styles/add_initiative.css"/>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="rightbar"></div>
+<nav class="sidebar">
+  <a href="#" class="titulo">Explorar</a>
+
+  <div class="menu-content">
+    <ul class="menu-items">
+
+      <li class="item">
+        <a href="index.html" class="submenu-item">
+          <span>Inicio</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+
+      <li class="item">
+        <a href="/initiative/add" class="submenu-item">
+          <span>Iniciativas</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <a href="sdg/list" class="submenu-item">
+          <span>SDG's</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="item">
+        <a href="/logout" class="submenu-item">
+          <span>Cerrar Sesión</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="menu-image">
+    <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
+  </div>
+</nav>
+<div class="content">
+  <form class="form" th:action="@{/ujiMember/initiative/update}" th:object="${initiative}" method="POST">
+    <h1>Edita la iniciativa</h1>
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" maxlength="250" required th:value="${initiative.name}"/>
+      <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+    </div>
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{state}" />
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="250" required th:value="${initiative.description}"/>
+      <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
+    </div>
+    <div class="form-group">
+      <label for="goal">Objetivo</label>
+      <input type="text" class="form-control" id="goal" th:field="*{goal}" maxlength="250" required th:value="${initiative.goal}"/>
+      <td th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}"></td>
+    </div>
+    <div class="form-group">
+      <label for="startDate">Fecha de inicio</label>
+      <input type="date" class="form-control" id="startDate" th:field="*{startDate}" maxlength="50" required th:value="${initiative.startDate}"/>
+      <td th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></td>
+    </div>
+    <div class="form-group">
+      <label for="finishDate">Fecha de fin</label>
+      <input type="date" class="form-control" id="finishDate" th:field="*{finishDate}" maxlength="50" required th:value="${initiative.finishDate}"/>
+      <td th:if="${#fields.hasErrors('finishDate')}" th:errors="*{finishDate}"></td>
+    </div>
+    <div class="form-group">
+      <label for="results">Motivación</label>
+      <input type="text" class="form-control" id="results" th:field="*{results}" maxlength="250" required th:value="${initiative.results}"/>
+      <td th:if="${#fields.hasErrors('results')}" th:errors="*{results}"></td>
+    </div>
+    <div class="form-group">
+      <label for="url">URL</label>
+      <input type="text" class="form-control" id="url" th:field="*{url}" maxlength="100" required th:value="${initiative.url}"/>
+    </div>
+    <div class="form-group">
+      <label for="sdg">SDG</label>
+      <select class="form-control" id="sdg" name="sdg" th:field="*{idSDG}">
+        <option th:each="sdg : ${sdgs}" th:value="${sdg.idSDG}" th:text="${sdg.name}"></option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="button">Actualiza</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

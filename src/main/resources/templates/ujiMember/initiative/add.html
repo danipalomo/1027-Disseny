@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="/styles/add_initiative.css"/>
 </head>
 <body>
+<div class="topbar"></div>
+<div class="rightbar"></div>
 <nav class="sidebar">
     <a href="#" class="titulo">Explorar</a>
 
@@ -18,14 +20,6 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </li>
-
-            <li class="item">
-                <a href="/login/login" class="submenu-item">
-                    <span>Login</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
-            </li>
-
             <li class="item">
                 <a href="/initiative/add" class="submenu-item">
                     <span>Iniciativas</span>
@@ -55,17 +49,17 @@
         <h1>Crear una iniciativa</h1>
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" th:field="*{name}" maxlength="50" required/>
+            <input type="text" class="form-control" id="name" th:field="*{name}" maxlength="250" required/>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
         </div>
         <div class="form-group">
             <label for="description">Descripción</label>
-            <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="50" required/>
+            <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="250" required/>
             <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
         </div>
         <div class="form-group">
             <label for="goal">Objetivo</label>
-            <input type="text" class="form-control" id="goal" th:field="*{goal}" maxlength="50" required/>
+            <input type="text" class="form-control" id="goal" th:field="*{goal}" maxlength="250" required/>
             <td th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}"></td>
         </div>
         <div class="form-group">
@@ -80,9 +74,20 @@
         </div>
         <div class="form-group">
             <label for="results">Motivación</label>
-            <input type="text" class="form-control" id="results" th:field="*{results}" maxlength="50" required/>
+            <input type="text" class="form-control" id="results" th:field="*{results}" maxlength="250" required/>
             <td th:if="${#fields.hasErrors('results')}" th:errors="*{results}"></td>
         </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" th:field="*{url}" maxlength="100" required/>
+        </div>
+        <div class="form-group">
+            <label for="sdg">SDG</label>
+            <select class="form-control" id="sdg" name="sdg" th:field="*{idSDG}">
+                <option th:each="sdg : ${sdgs}" th:value="${sdg.idSDG}" th:text="${sdg.name}"></option>
+            </select>
+        </div>
+
         <div class="form-group">
             <button type="submit" class="button">Crear iniciativa</button>
         </div>

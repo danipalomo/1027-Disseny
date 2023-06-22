@@ -44,8 +44,8 @@ public class LoginController {
             return "/login/login";
         }
 
-        model.addAttribute("user", user.getUsername());
-        session.setAttribute("user", user.getUsername());
+        model.addAttribute("user", user);
+        session.setAttribute("user", user);
         return getRedirectByUserTypePostLogin(user.getTypeUser());
     }
 

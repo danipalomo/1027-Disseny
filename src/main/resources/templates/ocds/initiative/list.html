@@ -23,22 +23,22 @@
                 </a>
             </li>
             <li class="item">
-                <a th:href="@{/login}" class="submenu-item">
-                    <span>Login</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
-            </li>
-            <li class="item">
                 <a href="/initiative/list" class="submenu-item">
                     <span>Iniciativas</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </li>
             <li class="item">
-                <div class="submenu-item">
-                    <span>SDG's <a href="">sitio web</a></span>
+                <a href="sdg/list" class="submenu-item">
+                    <span>SDG's</span>
                     <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                </a>
+            </li>
+            <li class="item">
+                <a href="/logout" class="submenu-item">
+                    <span>Cerrar Sesión</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
             </li>
         </ul>
     </div>
@@ -49,21 +49,55 @@
 
 <div class="mainc">
     <div class="container">
-        <h1>Listado de Iniciativas</h1>
-        <div class="initiative-list">
-            <div th:each="iniciativa : ${initiativesOCDS}" class="initiative-card">
-                <h2 th:text="${iniciativa.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
-                <h3>Descripción:</h3>
-                <p th:text="${iniciativa.description}" style="text-transform: capitalize;">Descripción de la iniciativa</p>
-                <p th:text="${iniciativa.state}" style="text-transform: capitalize;">Estado:</p>
-                <p th:text="${iniciativa.results}" style="text-transform: capitalize;">Resultado de la iniciativa</p>
-                <p th:text="${iniciativa.goal}" style="text-transform: capitalize;">Motivación de la iniciativa</p>
+        <div th:if="${#lists.isEmpty(initiativesOCDS)}" class="no-initiatives-ocds">
+            <h1>¡No hay más iniciativas que moderar por ahora!</h1>
+        </div>
+        <div th:if="${not #lists.isEmpty(initiativesOCDS)}">
+            <h4>Iniciativas pendientes de aprobación</h4>
+        </div>
+        <div th:each="initiative : ${initiativesOCDS}" class="initiative-card">
+            <h2 th:text="${initiative.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
+            <div class="field">
+                <label><strong>Descripción:</strong></label>
+                <span th:text="${initiative.description}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>Estado:</strong></label>
+                <span th:text="${initiative.state}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>Fecha de inicio:</strong></label>
+                <span th:text="${initiative.startDate}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>Fecha de fin:</strong></label>
+                <span th:text="${initiative.finishDate}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>URL:</strong></label>
+                <span th:text="${initiative.url}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>Motivación de la iniciativa:</strong></label>
+                <span th:text="${initiative.goal}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>Resultado de la iniciativa:</strong></label>
+                <span th:text="${initiative.results}" style="text-transform: capitalize;"></span>
+            </div>
+            <div class="field">
+                <label><strong>SDG:</strong></label>
+                <span th:text="${sdg.get(initiative.idSDG)}" style="text-transform: capitalize;"></span>
+            </div>
 
-                <div>
-                    <a th:href="@{/ocds/initiative/approve/{id}(id=${iniciativa.getId()})}" class="btn btn-warning" role="button">Aceptar</a>
-                    <a th:href="@{/ocds/initiative/reject/{id}(id=${iniciativa.getId()})}" class="btn btn-danger" role="button">Rechazar</a>
+            <div class="field">
+                <label><strong>Número de iniciativa:</strong></label>
+                <span th:text="${initiative.id}" style="text-transform: capitalize;"></span>
+            </div>
 
-                </div>
+            <div>
+                <a th:href="@{/ocds/initiative/approve/{id}(id=${initiative.getId()})}" class="btn btn-success" role="button">Aceptar</a>
+                <a th:href="@{/ocds/initiative/reject/{id}(id=${initiative.getId()})}" class="btn btn-danger" role="button">Rechazar</a>
             </div>
         </div>
     </div>
