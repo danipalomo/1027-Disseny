@@ -1,27 +1,37 @@
 .container {
-  background-image: url("/assets/suave_1.jpg");
-      background: linear-gradient(to bottom, #99daff, #f2f2f2);
-  position: relative;
+  background: linear-gradient(to bottom, #99daff, #f2f2f2);
+  position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-left: 260px;
-  margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
+  align-items: center !important;
+  margin-left: 130px;
+  margin-right:0px;
+  width: 100%;
   height: 100vh;
+  flex-direction: column;
   z-index: -2;
+}
+
+.div1 {
+  height: 200px;
+    align-items: center !important;
+
 }
 
 
 
 .image-container {
   position: absolute;
-  width: 50%;
+  width: 200%;
   height: auto;
   margin-left: 260px;
   z-index: -1;
 }
 
 .image-container img {
+  margin-left: 560px;
+    margin-top: 350px;
+
   width: 50%;
   height: 100%;
   object-fit: cover;
@@ -30,21 +40,22 @@
 }
 
 .container h1 {
+ animation-name: expandSoft;
   letter-spacing: 1;
-  font-size: 150px;
-  font-family: "sans-serif", sans-serif;
+  font-size: 200px;
   font-weight: bold;
   position: center;
   z-index: 1;
+  color: white; /* Color del interior del texto */
+  -webkit-text-stroke: 5px #11101d; /* Grosor y color del borde */
   margin-bottom: 200px; /* Ajusta el margen inferior según tus necesidades */
 }
 
-h2 {
-  position: center;
+.container h2 {
   font-size: 30px;
   font-weight: bold;
   z-index: 1;
-  margin-top: 150px; /* Ajusta el margen superior según tus necesidades */
+  margin-top: 30px !important; /* Ajusta el margen superior según tus necesidades */
 }
 
 .welcome-message {
@@ -54,4 +65,73 @@ h2 {
             margin-top: 0px;
         }
 
+.main-container-image {
+    margin-top: 180px;
 
+}
+
+.image-bottom-left {
+    width:213px;
+    height:auto;
+    spacing: 30px;
+}
+
+.encabezado_ujimember{
+ opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container h5 {
+    font-size: 40px;
+  -webkit-text-stroke: 1px #11101d; /* Grosor y color del borde */
+color: white;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInSoft {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container p {
+     animation-name: expand;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+}
+
+@keyframes expand {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes expandSoft {
+    from {
+        transform: scale(0.7);
+    }
+    to {
+        transform: scale(1);
+    }
+}

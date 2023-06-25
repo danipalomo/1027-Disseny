@@ -15,7 +15,7 @@ public class Initiative {
 
     private String description;
 
-    private InitiativeState state;
+    public InitiativeState state;
 
     private String url;
 
@@ -29,12 +29,6 @@ public class Initiative {
     private LocalDate startDate;
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     private LocalDate finishDate;
-
-    private enum InitiativeState {
-        Pending,
-        Approved,
-        Denied,
-    }
 
     public static int getIdCount() {
         return idCount.get();

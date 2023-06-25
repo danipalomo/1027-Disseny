@@ -22,7 +22,7 @@
         <ul class="menu-items">
 
             <li class="item">
-                <a href="index.html" class="submenu-item">
+                <a href="/index_OCDS" class="submenu-item">
                     <span>Inicio</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
@@ -49,16 +49,19 @@
         </ul>
     </div>
     <div class="menu-image">
-        <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
+        <img src="/images/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
     </div>
 </nav>
 
 <div class="container">
+    <div class="encabezado_ujimember">
+        <h5> - Miembro de la OCDS - </h5>
+    </div>
     <div class="welcome-message" th:if="${session.user}">
         <p>¡Bienvenido de nuevo <span th:text="${session.user.username}"></span>!</p>
     </div>
     <div class="image-container">
-        <img src="/assets/colores_fondo_azul.png" alt="Descripción de la imagen">
+        <img src="/images/colores_fondo_azul.png" alt="Descripción de la imagen">
     </div>
 
 </div>

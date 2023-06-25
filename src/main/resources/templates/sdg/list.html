@@ -191,14 +191,28 @@
         <ul class="menu-items">
 
             <li class="item">
-                <a href="index.html" class="submenu-item">
+                <a th:href="@{/}" class="submenu-item" th:unless="${session != null and session.user != null}">
                     <span>Inicio</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </li>
 
             <li class="item">
-                <a href="/login" class="submenu-item">
+                <a href="/index_UJIMember" class="submenu-item" th:if="${session != null and session.user != null and session.typeUser == 'UJI_MEMBER'}">
+                    <span>Inicio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/index_OCDS" class="submenu-item" th:if="${session != null and session.user != null and session.typeUser == 'OCDS'}">
+                    <span>Inicio</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="item">
+                <a href="/login" class="submenu-item" th:unless="${session != null and session.user != null}">
                     <span>Login</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
@@ -216,10 +230,16 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </li>
+            <li class="item">
+                <a href="/logout" class="submenu-item" th:if="${session != null and session.user != null}">
+                    <span>Cerrar sesión</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="menu-image">
-        <img src="/assets/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
+        <img src="/images/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
     </div>
 </nav>
 <div class="container justify-content-center">

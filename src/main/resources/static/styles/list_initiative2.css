@@ -97,15 +97,15 @@ h1 {
 
 .initiative-card .btn {
   display: inline-block;
-  margin-left: 160px;
-  margin-top: 60px;
+
+  margin-top: 30px;
   padding: 8px 16px;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   border-radius: 4px;
-  color: #fff;
-  margin-bottom: 10px;
+  color: black;
+  margin-bottom: 20px;
   justify-content: center;
 }
 
@@ -114,18 +114,42 @@ h1 {
   justify-content: center;
 }
 
-.buttons-wrapper .btn {
-  margin-bottom: 15px;
+.buttons-wrapper .btn btn-warning {
+  margin-top: 15px;
+  background-color: yellow;
 }
 
-.container .btn {
-  align: center;
-  justify-content: center;
-  display: block;
-  margin: 0 auto;
-  max-width: 80px;
-  max-height: 40px;
+.buttons-wrapper .btn btn-danger {
+  margin-bottom: 15px;
+  background-color: red;
 }
+
+.initiative-card .buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.initiative-card .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  color: black;
+}
+
+.initiative-card .btn.btn-warning {
+  margin-right: 10px;
+  background-color: yellow;
+}
+
+.initiative-card .btn.btn-danger {
+  background-color: red;
+}
+
 
 .no-initiatives-ocds {
   margin-left: 285px;
@@ -147,25 +171,22 @@ h1 {
 }
 
 /* Colores personalizados para las tarjetas */
-.initiative-card:nth-child(1) {
+.initiative-card:nth-child(4n+1) {
   background-color: #ffcc80;
 }
 
-.initiative-card:nth-child(2) {
+.initiative-card:nth-child(4n+2) {
   background-color: #81d4fa;
 }
 
-.initiative-card:nth-child(3) {
+.initiative-card:nth-child(4n+3) {
   background-color: #a5d6a7;
 }
 
-.initiative-card:nth-child(4) {
-  background-color: #ffd54f;
+.initiative-card:nth-child(4n+4) {
+  background-color: #B57EDC;
 }
 
-.initiative-card:nth-child(5) {
-  background-color: #e6ee9c;
-}
 
 /* Animación */
 @keyframes card-fade-in {
@@ -180,4 +201,61 @@ h1 {
 }
 
 .initiative-card {
+}
+
+.white-background {
+    background-color: white !important;;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+}
+
+.btn-anyadir a {
+ align: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+  max-width: 120px;
+  max-height: 80px;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-anyadir a:hover {
+  background-color: #218838;
+}
+
+.btn-anyadir a:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+.btn-warning a:hover {
+  background-color: #218838;
+}
+
+.btn-danger a:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+.initiative-card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.initiative-card .btn-warning:hover {
+  background-color: rgba(255, 255, 0, 0.9); /* Estilo para el hover del botón "Editar" */
+}
+
+.initiative-card .btn-danger:hover {
+  background-color: rgba(255, 0, 0, 0.9); /* Estilo para el hover del botón "Borrar" */
 }

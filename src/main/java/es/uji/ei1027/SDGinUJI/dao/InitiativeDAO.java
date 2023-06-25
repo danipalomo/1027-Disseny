@@ -57,6 +57,7 @@ public class InitiativeDAO {
     }
 
     public void updateInitiative(Initiative initiative) {
+        initiative.setState("Pending");
         jdbcTemplate.update("UPDATE initiative SET name=?, description=?, state=?, URL=?,initial_date=?, final_date=?, expected_results=?, motivation=?, num_SDG=? WHERE id_initiative=?",
                 initiative.getName(), initiative.getDescription(),
                 initiative.getState(), initiative.getUrl(), initiative.getStartDate(),
