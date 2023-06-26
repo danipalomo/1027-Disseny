@@ -41,29 +41,31 @@
       </li>
     </ul>
   </div>
-  <div class="menu-image">
-    <img src="/images/logo_uji_white.png" alt="Imagen del menú" class="menu-image">
-  </div>
+  <a href="https://www.uji.es/">
+    <div class="menu-image">
+      <img src="/images/logo_uji_white.png" alt="Logo de la UJI" class="menu-image" />
+    </div>
+  </a>
 </nav>
 <div class="content">
-  <form class="form" th:action="@{/ujiMember/initiative/update}" th:object="${initiative}" method="POST">
+  <form class="form" th:action="@{/ujiMember/initiative/update}" th:object="${initiative}" method="POST" novalidate>
     <h1>Edita la iniciativa</h1>
     <div class="form-group">
       <label for="name">Nombre</label>
       <input type="text" class="form-control" id="name" th:field="*{name}" maxlength="250" required th:value="${initiative.name}"/>
-      <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+      <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></td>
     </div>
     <input type="hidden" th:field="*{id}" />
     <input type="hidden" th:field="*{state}" />
     <div class="form-group">
       <label for="description">Descripción</label>
       <input type="text" class="form-control" id="description" th:field="*{description}" maxlength="250" required th:value="${initiative.description}"/>
-      <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
+      <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error-message"> </td>
     </div>
     <div class="form-group">
       <label for="goal">Objetivo</label>
       <input type="text" class="form-control" id="goal" th:field="*{goal}" maxlength="250" required th:value="${initiative.goal}"/>
-      <td th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}"></td>
+      <td th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}" class="error-message"></td>
     </div>
     <div class="form-group">
       <label for="startDate">Fecha de inicio</label>
@@ -78,11 +80,12 @@
     <div class="form-group">
       <label for="results">Motivación</label>
       <input type="text" class="form-control" id="results" th:field="*{results}" maxlength="250" required th:value="${initiative.results}"/>
-      <td th:if="${#fields.hasErrors('results')}" th:errors="*{results}"></td>
+      <td th:if="${#fields.hasErrors('results')}" th:errors="*{results}" class="error-message"></td>
     </div>
     <div class="form-group">
       <label for="url">URL</label>
       <input type="text" class="form-control" id="url" th:field="*{url}" maxlength="100" required th:value="${initiative.url}"/>
+      <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="error-message"></td>
     </div>
     <div class="form-group">
       <label for="sdg">SDG</label>
@@ -96,5 +99,7 @@
     </div>
   </form>
 </div>
+<p class="footer">Universitat Jaume I Av. Vicent Sos Baynat, 12071 Castelló de la Plana, España Tel.: +34 964 72 80 00</p>
+
 </body>
 </html>

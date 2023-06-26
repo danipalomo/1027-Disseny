@@ -4,10 +4,7 @@ import es.uji.ei1027.SDGinUJI.dao.InitiativeDAO;
 import es.uji.ei1027.SDGinUJI.dao.ParticipaDAO;
 import es.uji.ei1027.SDGinUJI.dao.SdgDAO;
 import es.uji.ei1027.SDGinUJI.model.*;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.*;
@@ -105,7 +102,7 @@ public class InitiativeUJIMemberController {
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String processUpdateSubmit(@ModelAttribute("initiative") Initiative initiative, BindingResult bindingResult, HttpSession session) {
+    public String processUpdateSubmit(@ModelAttribute("initiative") Initiative initiative, BindingResult bindingResult, HttpSession session, Model model) {
         AddInitiativeValidator initiativeValidator = new AddInitiativeValidator();
         initiativeValidator.validate(initiative, bindingResult);
 
@@ -113,11 +110,9 @@ public class InitiativeUJIMemberController {
             return "redirect:/login";
         }
 
-        if (bindingResult.hasErrors()) {
-            return "loginUs/initiative/update";
-        }
 
         initiativeDao.updateInitiative(initiative);
+        model.addAttribute("updated", "updated");
         return "redirect:/ujiMember/initiative/list";
     }
 
@@ -141,6 +136,41 @@ public class InitiativeUJIMemberController {
         @Override
         public void validate(Object obj, Errors errors) {
             Initiative initiative = (Initiative) obj;
+
+            if (initiative.getUrl().length() == 0) {
+                errors.rejectValue("url", "required", "La url es obligatoria");
+            }
+            if (initiative.getUrl().length() >= 50) {
+                errors.rejectValue("url", "required", "La url no puede superar los 50 carácteres");
+            }
+
+            if (initiative.getDescription().length() == 0) {
+                errors.rejectValue("description", "required", "La descripción es obligatoria");
+            }
+            if (initiative.getDescription().length() >= 50) {
+                errors.rejectValue("description", "required", "La descripción no puede superar los 50 carácteres");
+            }
+
+            if (initiative.getResults().length() == 0) {
+                errors.rejectValue("results", "required", "El resultado es obligatorio");
+            }
+            if (initiative.getResults().length() >= 50) {
+                errors.rejectValue("results", "required", "El resultado no puede superar los 50 carácteres");
+            }
+
+            if (initiative.getName().length() == 0) {
+                errors.rejectValue("name", "required", "El titulo es obligatorio");
+            }
+            if (initiative.getName().length() >= 50) {
+                errors.rejectValue("name", "required", "El titulo no puede superar los 50 carácteres");
+            }
+
+            if (initiative.getGoal().length() == 0) {
+                errors.rejectValue("goal", "required", "El objetivo es obligatorio");
+            }
+            if (initiative.getGoal().length() >= 50) {
+                errors.rejectValue("goal", "required", "El objetivo no puede superar los 50 carácteres");
+            }
 
             if (initiative.getStartDate() == null)
                 errors.rejectValue("startDate", "required", "La fecha inicial es obligatoria");

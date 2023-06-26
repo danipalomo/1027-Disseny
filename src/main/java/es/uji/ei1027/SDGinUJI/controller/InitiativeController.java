@@ -34,7 +34,7 @@ public class InitiativeController {
         List<Initiative> initiativeList = initiativeDao.getInitiatives();
         initiativeList.sort(Comparator.comparingInt(Initiative::getId));
         model.addAttribute("sdg", sdgDao.getIdNameMap());
-        model.addAttribute("initiative", initiativeList);
+        model.addAttribute("initiativeList", initiativeList);
         return "initiative/list";
     }
 
@@ -47,7 +47,7 @@ public class InitiativeController {
 
     @RequestMapping(value="/update/{id_initiative}", method = RequestMethod.GET)
     public String editInitiative(Model model, @PathVariable int id_initiative) {
-        model.addAttribute("initiative", initiativeDao.getInitiative(id_initiative));
+        model.addAttribute("initiativeList", initiativeDao.getInitiative(id_initiative));
         return "initiative/update";
     }
 

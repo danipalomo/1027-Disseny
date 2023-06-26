@@ -259,3 +259,21 @@ h1 {
 .initiative-card .btn-danger:hover {
   background-color: rgba(255, 0, 0, 0.9); /* Estilo para el hover del botón "Borrar" */
 }
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.floating-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeOut 4s linear;
+}

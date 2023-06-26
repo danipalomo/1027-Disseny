@@ -43,14 +43,17 @@
             </li>
         </ul>
     </div>
-    <div class="menu-image">
-        <img src="/images/logo_uji_white.png" alt="Imagen del menú" class="menu-image" />
-    </div>
+    <a href="https://www.uji.es/">
+        <div class="menu-image">
+            <img src="/images/logo_uji_white.png" alt="Logo de la UJI" class="menu-image" />
+        </div>
+    </a>
 </nav>
 
 <div class="mainc">
     <div class="container">
         <h1>Listado de Iniciativas</h1>
+
         <div class="initiative-list">
             <div th:each="initiative : ${initiativeList}" th:if="${initiative.getState() == 'Approved'}" class="initiative-card">
                     <h2 th:text="${initiative.name}" style="text-transform: capitalize;">Título de la iniciativa</h2>
@@ -106,6 +109,9 @@
         </div>
     </div>
 </div>
+
+<p class="footer">Universitat Jaume I Av. Vicent Sos Baynat, 12071 Castelló de la Plana, España Tel.: +34 964 72 80 00</p>
+
 
 </body>
 </html>
